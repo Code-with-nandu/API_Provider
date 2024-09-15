@@ -98,6 +98,28 @@ class ApiDemo extends RestController
 
     }
     
+    public function deleteEmp_delete($id)
+    {
+        $emp = new Employee_model;
+        $result = $emp ->delete_emp($id);
+        if($result>0)
+        {
+            $this->response([
+                'status'=> true,
+                'message'=> 'New Employee deleted'
+            ] ,RestController::HTTP_OK );
+        }
+        else
+        {
+            $this->response([
+                'status'=> false,
+                'message'=> 'Failed to  Delete employee'
+            ] ,RestController::HTTP_BAD_REQUEST );
+
+        }
+    }
+
+    
     
 
 }

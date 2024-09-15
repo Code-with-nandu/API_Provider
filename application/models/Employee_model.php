@@ -24,7 +24,11 @@ class Employee_model extends CI_Model {
         $this->db->where('id',$id);
         return  $this->db->update('employee',$data);
     }
-
+    public function delete_emp($id)
+    {
+        $this->db->where('id',$id);
+        return  $this->db->delete('employee',['id'=>$id]);
+    }
 
 
 
