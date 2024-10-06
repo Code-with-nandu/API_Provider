@@ -25,9 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // $config['base_url'] = '';
 if ($_SERVER['HTTP_HOST'] == 'localhost') {
-    $config['base_url'] = 'http://localhost/1_CI/hotel/';
+    $config['base_url'] = 'http://localhost/1_api/API_Provider/';
 } else {
-    $config['base_url'] = 'https://krishnendudalui.in.net/hotel_ci/';
+    $config['base_url'] = 'https://krishnendudalui.in.net/API_Provider/';
 }
 
 
