@@ -30,6 +30,7 @@ $config['force_https'] = false;
 |
 */
 $config['rest_default_format'] = 'json';
+$config['rest_default_method'] = 'post';  // or add 'post' to allowed methods
 
 /*
 |--------------------------------------------------------------------------
