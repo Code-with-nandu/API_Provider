@@ -819,29 +819,38 @@ class RestController extends \CI_Controller
      * Get the HTTP request string e.g. get or post.
      *
      * @return string|null Supported request method as a lowercase string; otherwise, NULL if not supported
-     */
-    protected function _detect_method()
-    {
-        // Declare a variable to store the method
-        $method = null;
+     */protected function _detect_method()
+{
+    // Declare a variable to store the method
+    $method = null;
 
-        // Determine whether the 'enable_emulate_request' setting is enabled
-        if ($this->config->item('enable_emulate_request') === true) {
-            $method = $this->input->post('_method');
-            if ($method === null) {
-                $method = $this->input->server('HTTP_X_HTTP_METHOD_OVERRIDE');
-            }
+    // Determine whether the 'enable_emulate_request' setting is enabled
+    if ($this->config->item('enable_emulate_request') === true) {
+        $method = $this->input->post('_method');
+        
+        if ($method === null) {
+            $method = $this->input->server('HTTP_X_HTTP_METHOD_OVERRIDE');
+        }
 
+        // Check if method is not null before calling strtolower
+        if ($method !== null) {
             $method = strtolower($method);
         }
-
-        if (empty($method)) {
-            // Get the request method as a lowercase string
-            $method = $this->input->method();
-        }
-
-        return in_array($method, $this->allowed_http_methods) && method_exists($this, '_parse_'.$method) ? $method : 'get';
     }
+
+    if (empty($method)) {
+        // Get the request method as a lowercase string
+        $method = $this->input->method();
+    }
+
+    // Ensure the method is a valid string before proceeding
+    if (!is_string($method)) {
+        $method = 'get'; // Default to 'get' if it's not valid
+    }
+
+    return in_array($method, $this->allowed_http_methods) && method_exists($this, '_parse_'.$method) ? $method : 'get';
+}
+
 
     /**
      * See if the user has provided an API key.
