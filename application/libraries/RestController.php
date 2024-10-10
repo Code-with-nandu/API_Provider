@@ -819,7 +819,8 @@ class RestController extends \CI_Controller
      * Get the HTTP request string e.g. get or post.
      *
      * @return string|null Supported request method as a lowercase string; otherwise, NULL if not supported
-     */protected function _detect_method()
+     */
+    protected function _detect_method()
 {
     // Declare a variable to store the method
     $method = null;
