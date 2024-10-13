@@ -33,7 +33,7 @@
 
 This guide will walk you through setting up two CodeIgniter projects: the first project acts as an API Provider (exposing data via a REST API), and the second project acts as an API Consumer (fetching data from the first project's API).
 
-## **Project 2: API Provider-V1**
+## **Project 2: API Provider-V1** 
 
 
 ### Step 1: Download Local host  project
